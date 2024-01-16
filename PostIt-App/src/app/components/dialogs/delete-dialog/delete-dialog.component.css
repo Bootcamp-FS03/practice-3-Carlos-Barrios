@@ -1,0 +1,9 @@
+.delete-dialog__actions {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .delete-dialog__actions button:first-of-type {
+    margin-right: 20px;
+  }

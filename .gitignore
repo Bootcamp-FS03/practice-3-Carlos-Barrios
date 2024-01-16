@@ -1,0 +1,16 @@
+.vscode/
+.vs/
+
+[Oo]bj/
+[Bb]in/
+
+.idea/
+
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+
+.node_modules/

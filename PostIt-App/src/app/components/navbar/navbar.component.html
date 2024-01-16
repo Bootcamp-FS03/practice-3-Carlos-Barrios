@@ -1,0 +1,33 @@
+<mat-toolbar class="bg-barnav">
+    <span>
+        <h4>
+            <span class="text-title-color fw-bolder">SocialNet</span>
+        </h4>
+    </span>
+    <span class="spacer"></span>
+    <span>
+        <a routerLink="/posts">
+            <h3>
+                <span>Posts</span>
+            </h3>
+        </a>
+    </span>
+    <span class="spacer"></span>
+    <span>
+        <a routerLink="/my-posts">
+            <h3>
+                <span>My Posts</span>
+            </h3>
+        </a>
+    </span>
+    <span class="spacer"></span>
+    <button (click)="onPostCreate()">
+        Add Post
+    </button>
+    <span class="spacer"></span>
+    <div *ngIf="user.profilePicture">Profile</div>
+    <button mat-button class="text-white" (click)="logout()" >
+        <mat-icon>exit_to_app</mat-icon>
+        Logout
+    </button>
+</mat-toolbar>

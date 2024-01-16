@@ -1,0 +1,4 @@
+<app-navbar></app-navbar>
+<div *ngFor="let post of myPosts">
+    <app-post-card [post]="post" [isOwner]="post.userId === user.id" (cardUpdated)="getPosts()" (cardDeleted)="getPosts()"></app-post-card>
+</div>

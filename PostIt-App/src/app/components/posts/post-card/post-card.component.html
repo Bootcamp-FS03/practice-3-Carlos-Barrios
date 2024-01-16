@@ -1,0 +1,9 @@
+<section class="post-card__info">
+    <div>
+        <p>{{post.content}}</p>
+    </div>
+</section>
+<section *ngIf="isOwner" class="post-card__options">
+    <mat-icon (click)="onUpdatePost(post)" aria-hidden="false" aria-label="edit squared icon"
+        fontIcon="edit_square"></mat-icon>
+    <mat-icon (click)="onDeletePost(post)" aria-hidden="false" aria-label="delete icon" fontIcon="delete"></mat-icon>
