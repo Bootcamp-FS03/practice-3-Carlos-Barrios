@@ -1,9 +1,25 @@
-<section class="post-card__info">
-    <div>
-        <p>{{post.content}}</p>
-    </div>
-</section>
-<section *ngIf="isOwner" class="post-card__options">
-    <mat-icon (click)="onUpdatePost(post)" aria-hidden="false" aria-label="edit squared icon"
-        fontIcon="edit_square"></mat-icon>
-    <mat-icon (click)="onDeletePost(post)" aria-hidden="false" aria-label="delete icon" fontIcon="delete"></mat-icon>
+<mat-card>
+    <mat-card-content>
+        <section class="post-card__info">
+            <div>
+                <p>{{post.content}}</p>
+            </div>
+        </section>
+        <section *ngIf="isOwner" class="post-card__options">
+            
+            <button mat-icon-button color="primary"
+            (click)="onUpdatePost(post)" aria-hidden="false" aria-label="edit squared icon">
+                <mat-icon >
+                    edit
+                </mat-icon>
+            </button>
+
+            <button mat-icon-button color="warn"
+            (click)="onDeletePost(post)" aria-hidden="false" aria-label="edit squared icon">
+                <mat-icon >
+                    delete
+                </mat-icon>
+            </button>
+        </section>
+    </mat-card-content>
+</mat-card>

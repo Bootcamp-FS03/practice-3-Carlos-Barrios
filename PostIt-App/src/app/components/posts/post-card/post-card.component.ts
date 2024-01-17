@@ -27,13 +27,13 @@ export class PostCardComponent {
     });
 
     dialogRef.afterClosed().subscribe({
-      next: (_) => this.cardDeleted.emit(true)
+      next: (_) => this.cardUpdated.emit(true)
     });
   }
 
   onDeletePost(post: Post): void {
     const dialogRef = this.dialog.open(DeleteDialogComponent, {
-      width: '250px',
+      width: '400px',
       data: post
     });
 

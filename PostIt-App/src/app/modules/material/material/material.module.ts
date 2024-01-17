@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
-import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatToolbarModule} from '@angular/material/toolbar';
-import {MatInputModule } from '@angular/material/input';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [],
@@ -13,11 +14,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CommonModule,
     MatIconModule,
     MatDialogModule,
-    MatSelectModule,
     MatToolbarModule,
     MatInputModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatCardModule
   ],
-  exports: [MatIconModule, MatSelectModule, MatToolbarModule, MatInputModule, BrowserAnimationsModule]
+  exports: [
+    MatIconModule, MatToolbarModule, MatInputModule, 
+    BrowserAnimationsModule, MatButtonModule, MatCardModule
+  ]
 })
 export class MaterialModule { }

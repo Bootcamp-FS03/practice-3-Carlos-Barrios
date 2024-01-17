@@ -43,7 +43,7 @@ export class PostsComponent implements OnInit, OnDestroy {
     this.posts$ = this.postService.getAllPosts();
     this.postSubscription = this.posts$.subscribe({
       next: (res) => {
-        this.posts = res;
+        this.posts = res.reverse();
       }
     });
   }

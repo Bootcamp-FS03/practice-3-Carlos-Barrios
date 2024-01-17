@@ -9,7 +9,7 @@
 }
 
 .post-card__info {
-    width: 75%;
+    width: 100%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -25,16 +25,11 @@
     font-weight: bold;
 }
 
-.post-card__info div small {
-    margin: 0;
-}
-
-/* .post-card__options {
+.post-card__options {
     width: 25%;
     display: flex;
     align-self: flex-end;
-    justify-content: space-between;
-} */
+}
 
 .post-card__options .mat-icon:hover {
     cursor: pointer;

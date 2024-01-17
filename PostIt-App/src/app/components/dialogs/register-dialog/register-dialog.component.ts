@@ -4,7 +4,6 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { UsersService } from 'src/app/services/users.service';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
-import { validateHorizontalPosition } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-register-dialog',
@@ -39,11 +38,12 @@ export class RegisterDialogComponent implements OnInit {
   matchPasswords(control: any): { [key: string]: boolean } | null {
     const password = this.registerForm?.get('password')?.value;
     const confirmPassword = control.value;
-  
+
     return password === confirmPassword ? null : { 'mismatch': true };
   }
 
-  onSubmit(): void {
+  onSubmit(event : Event): void {
+    event.preventDefault(); 
     if (this.registerForm.valid) {
       const newUser = {
         name: this.registerForm.get('name')?.value,
@@ -63,18 +63,19 @@ export class RegisterDialogComponent implements OnInit {
               this.router.navigate(['/posts']);
             },
             error: (error) => {
-              console.error('Error: ', error)
+              console.error('Error: ', error);
             }
           })
         },
         error: (error) => {
-          console.error('Error: ', error);
+          alert(error.error.message);
         }
       });
     }
   }
 
-  onCancel(): void {
+  onCancel(event : Event): void {
+    event.preventDefault();
     this.dialogRef.close();
   }
 }

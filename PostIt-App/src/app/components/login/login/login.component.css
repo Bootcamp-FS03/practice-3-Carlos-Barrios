@@ -1,6 +1,10 @@
+.login-form-container {
+    overflow: hidden;
+}
+
 .login-form {
     width: 300px;
-    margin: 10vh auto;
+    margin: 50px auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -17,6 +21,13 @@
     margin-top: 8px;
 }
 
-.login-form .mat-raised-button:hover {
-    background-color: #45a049;
+.login-form-actions {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+}
+
+.login-form-actions button {
+    margin: 0 12px;
 }

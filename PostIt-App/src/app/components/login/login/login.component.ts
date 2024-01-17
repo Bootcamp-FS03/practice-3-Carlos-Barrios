@@ -4,7 +4,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { LoginService } from 'src/app/services/login.service';
-import { UsersService } from 'src/app/services/users.service';
 import { RegisterDialogComponent } from '../../dialogs/register-dialog/register-dialog.component';
 
 @Component({
@@ -20,7 +19,6 @@ export class LoginComponent implements OnDestroy {
   constructor(
     private formBuilder: FormBuilder,
     private loginService: LoginService,
-    private userService: UsersService,
     private router: Router,
     private dialog: MatDialog
   ) {
@@ -48,14 +46,15 @@ export class LoginComponent implements OnDestroy {
           this.router.navigate(['posts']);
         },
         error: (error) => {
-          console.error('Error:', error);
+          alert(error.error.message);
+          this.loginForm.get('password')?.reset('');
         }
       });
     }
   }
 
-  onRegister(): void { 
-    const dialogRef = this.dialog.open(RegisterDialogComponent,{
+  onRegister(): void {
+    const dialogRef = this.dialog.open(RegisterDialogComponent, {
       width: '500px'
     });
 

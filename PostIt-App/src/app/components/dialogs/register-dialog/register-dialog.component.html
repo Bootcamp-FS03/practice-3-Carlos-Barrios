@@ -1,40 +1,36 @@
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-    <mat-form-field>
-      <label for="name">Name:</label>
-      <input matInput type="text" id="name" formControlName="name">
-    </mat-form-field>
-  
-    <mat-form-field>
-      <label for="lastname">Lastname:</label>
-      <input matInput type="text" id="lastname" formControlName="lastname">
-    </mat-form-field>
-  
-    <mat-form-field>
-      <label for="email">Email:</label>
-      <input matInput type="email" id="email" formControlName="email">
-    </mat-form-field>
-  
-    <mat-form-field>
-      <label for="username">Username:</label>
-      <input matInput type="text" id="username" formControlName="username">
-    </mat-form-field>
-  
-    <mat-form-field>
-      <label for="password">Password:</label>
-      <input matInput type="password" id="password" formControlName="password">
-    </mat-form-field>
-  
-    <mat-form-field>
-      <label for="confirmPassword">Confirm password:</label>
-      <input matInput type="password" id="confirmPassword" formControlName="confirmPassword">
-    </mat-form-field>
-  
-    <!-- <mat-form-field>
-      <label for="image">Cargar Imagen:</label>
-      <input matInput type="file" id="image" formControlName="image">
-    </mat-form-field>
-   -->
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit($event)">
+  <mat-form-field>
+    <label for="name">Name:</label>
+    <input matInput type="text" id="name" formControlName="name">
+  </mat-form-field>
+
+  <mat-form-field>
+    <label for="lastname">Lastname:</label>
+    <input matInput type="text" id="lastname" formControlName="lastname">
+  </mat-form-field>
+
+  <mat-form-field>
+    <label for="email">Email:</label>
+    <input matInput type="email" id="email" formControlName="email">
+  </mat-form-field>
+
+  <mat-form-field>
+    <label for="username">Username:</label>
+    <input matInput type="text" id="username" formControlName="username">
+  </mat-form-field>
+
+  <mat-form-field>
+    <label for="password">Password:</label>
+    <input matInput type="password" id="password" formControlName="password">
+  </mat-form-field>
+
+  <mat-form-field>
+    <label for="confirmPassword">Confirm password:</label>
+    <input matInput type="password" id="confirmPassword" formControlName="confirmPassword">
+  </mat-form-field>
+
+  <div class="form-actions">
     <button mat-raised-button color="primary" type="submit" [disabled]="registerForm.invalid">Registrar</button>
-    <button mat-raised-button color="primary" (click)="onCancel()">Cancel</button>
-  </form>
-  
+    <button mat-raised-button tabindex="button" (click)="onCancel($event)">Cancel</button>
+  </div>
+</form>

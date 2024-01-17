@@ -42,7 +42,7 @@ export class MyPostsComponent {
     this.myPosts$ = this.user && this.user?.id? this.postService.getAllUserPost(this.user.id) : of([]);;
     this.myPostSubscription = this.myPosts$.subscribe({
       next: (res) => {
-        this.myPosts = res;
+        this.myPosts = res.reverse();
       }
     });
   }
