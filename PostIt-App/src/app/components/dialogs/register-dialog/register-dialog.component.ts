@@ -1,24 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { UsersService } from 'src/app/services/users.service';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
+import { Observable, Subscription } from 'rxjs';
+import { User } from 'src/app/models/user.model';
+import { UserAuth } from 'src/app/models/userAuth.model';
+import { AuthData } from 'src/app/models/authData.model';
 
 @Component({
   selector: 'app-register-dialog',
   templateUrl: './register-dialog.component.html',
-  styleUrls: ['./register-dialog.component.css']
+  styleUrls: ['./register-dialog.component.css'],
 })
-export class RegisterDialogComponent implements OnInit {
+export class RegisterDialogComponent implements OnInit{
   registerForm!: FormGroup;
+  user$!: Observable<User>;
+  userSubscription!: Subscription;
+  userLogin$!: Observable<AuthData>;
+  userLoginSubscription!: Subscription;
+
   constructor(
     private formBuilder: FormBuilder,
     private dialogRef: MatDialogRef<RegisterDialogComponent>,
     private userService: UsersService,
     private loginService: LoginService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.initializeForm();
@@ -31,7 +40,10 @@ export class RegisterDialogComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       username: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', [Validators.required, this.matchPasswords.bind(this)]],
+      confirmPassword: [
+        '',
+        [Validators.required, this.matchPasswords.bind(this)],
+      ],
     });
   }
 
@@ -39,11 +51,11 @@ export class RegisterDialogComponent implements OnInit {
     const password = this.registerForm?.get('password')?.value;
     const confirmPassword = control.value;
 
-    return password === confirmPassword ? null : { 'mismatch': true };
+    return password === confirmPassword ? null : { mismatch: true };
   }
 
-  onSubmit(event : Event): void {
-    event.preventDefault(); 
+  onSubmit(event: Event): void {
+    event.preventDefault();
     if (this.registerForm.valid) {
       const newUser = {
         name: this.registerForm.get('name')?.value,
@@ -51,12 +63,18 @@ export class RegisterDialogComponent implements OnInit {
         email: this.registerForm.get('email')?.value,
         username: this.registerForm.get('username')?.value,
         password: this.registerForm.get('password')?.value,
-        profilePicture: ''
+        profilePicture: '',
       };
-      this.userService.createUser(newUser).subscribe({
+      this.user$ = this.userService.createUser(newUser);
+      this.userSubscription = this.user$.subscribe({
         next: (user) => {
           this.dialogRef.close(user);
-          this.loginService.login(newUser.username, newUser.password).subscribe({
+          const newUserLogin: UserAuth = {
+            username: newUser.username,
+            password: newUser.password,
+          };
+          this.userLogin$ = this.loginService.login(newUserLogin);
+          this.userLoginSubscription = this.userLogin$.subscribe({
             next: (res) => {
               this.loginService.setToken(res.token);
               this.loginService.setUser(res.user);
@@ -64,17 +82,17 @@ export class RegisterDialogComponent implements OnInit {
             },
             error: (error) => {
               console.error('Error: ', error);
-            }
-          })
+            },
+          });
         },
         error: (error) => {
           alert(error.error.message);
-        }
+        },
       });
     }
   }
 
-  onCancel(event : Event): void {
+  onCancel(event: Event): void {
     event.preventDefault();
     this.dialogRef.close();
   }

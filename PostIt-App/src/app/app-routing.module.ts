@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'posts', component: PostsComponent, canActivate: [authGuard]},
   { path: 'my-posts', component: MyPostsComponent, canActivate: [authGuard] },
   { path: '', pathMatch: 'full', redirectTo: 'login' },
-  { path: '**', redirectTo:''},
+  { path: '**', redirectTo:'login'},
 ];
 
 @NgModule({

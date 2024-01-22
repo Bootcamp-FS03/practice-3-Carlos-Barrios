@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { LoginService } from 'src/app/services/login.service';
 import { RegisterDialogComponent } from '../../dialogs/register-dialog/register-dialog.component';
+import { UserAuth } from 'src/app/models/userAuth.model';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ export class LoginComponent implements OnDestroy {
   loginForm: FormGroup;
   login$!: Observable<any>;
   loginSubscription!: Subscription;
+  userAuth ! :UserAuth;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -37,7 +39,8 @@ export class LoginComponent implements OnDestroy {
   login() {
     if (this.loginForm.valid) {
       const { username, password } = this.loginForm.value;
-      this.login$ = this.loginService.login(username, password);
+      this.userAuth = this.loginForm.value;
+      this.login$ = this.loginService.login(this.userAuth);
 
       this.loginSubscription = this.login$.subscribe({
         next: (res) => {
