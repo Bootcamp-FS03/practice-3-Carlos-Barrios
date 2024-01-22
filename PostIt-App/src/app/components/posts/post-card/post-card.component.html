@@ -1,32 +1,39 @@
 <mat-card>
-    <mat-card-content>
-        <section class="post-card__info">
-            <div>
-                <p *ngIf="!showFullContent">
-                    {{ truncateText(post.content) }}
-                    <a *ngIf="post.content.length > 200" (click)="toggleContent()">Read more</a>
-                </p>
-                <p *ngIf="showFullContent">
-                    {{ post.content }}
-                    <a (click)="toggleContent()">Read less</a>
-                </p>
-            </div>
-        </section>
-        <section *ngIf="isOwner" class="post-card__options">
-            
-            <button mat-icon-button color="primary"
-            (click)="onUpdatePost(post)" aria-hidden="false" aria-label="edit squared icon">
-                <mat-icon >
-                    edit
-                </mat-icon>
-            </button>
+  <mat-card-content>
+    <section class="post-card__info">
+      <div>
+        <p *ngIf="!showFullContent">
+          {{ truncateText(post.content) }}
+          <a *ngIf="post.content.length > 200" (click)="toggleContent()"
+            >Read more</a
+          >
+        </p>
+        <p *ngIf="showFullContent">
+          {{ post.content }}
+          <a (click)="toggleContent()">Read less</a>
+        </p>
+      </div>
+    </section>
+    <section *ngIf="isOwner" class="post-card__options">
+      <button
+        mat-icon-button
+        color="primary"
+        (click)="onUpdatePost(post)"
+        aria-hidden="false"
+        aria-label="edit squared icon"
+      >
+        <mat-icon> edit </mat-icon>
+      </button>
 
-            <button mat-icon-button color="warn"
-            (click)="onDeletePost(post)" aria-hidden="false" aria-label="edit squared icon">
-                <mat-icon >
-                    delete
-                </mat-icon>
-            </button>
-        </section>
-    </mat-card-content>
+      <button
+        mat-icon-button
+        color="warn"
+        (click)="onDeletePost(post)"
+        aria-hidden="false"
+        aria-label="edit squared icon"
+      >
+        <mat-icon> delete </mat-icon>
+      </button>
+    </section>
+  </mat-card-content>
 </mat-card>

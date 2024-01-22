@@ -1,13 +1,29 @@
 <h1 mat-dialog-title>{{ data ? "Update" : "Create" }} Post</h1>
 
 <form class="form-dialog" [formGroup]="postForm" (ngSubmit)="onSubmit()">
-    <div class="form-dialog__field">
-        <mat-form-field class="form-dialog__content">
-            <textarea matInput name="content" id="content" rows="8" placeholder="Post Content" formControlName="content"></textarea>
-        </mat-form-field>
-    </div>
-    <div class="form-dialog__actions">
-        <button mat-raised-button color="primary" type="submit" [disabled]="postForm.invalid">Save</button>
-        <button mat-raised-button color="" type="button" (click)="onCancel()">Cancel</button>
-    </div>
+  <div class="form-dialog__field">
+    <mat-form-field class="form-dialog__content">
+      <textarea
+        matInput
+        name="content"
+        id="content"
+        rows="8"
+        placeholder="Post Content"
+        formControlName="content"
+      ></textarea>
+    </mat-form-field>
+  </div>
+  <div class="form-dialog__actions">
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="postForm.invalid"
+    >
+      Save
+    </button>
+    <button mat-raised-button color="" type="button" (click)="onCancel()">
+      Cancel
+    </button>
+  </div>
 </form>
