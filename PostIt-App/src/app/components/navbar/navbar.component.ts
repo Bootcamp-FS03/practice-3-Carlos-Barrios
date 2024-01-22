@@ -8,16 +8,18 @@ import { FormDialogComponent } from '../dialogs/form-dialog/form-dialog.componen
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent {
   user!: User;
 
-  constructor(private readonly router: Router,
+  constructor(
+    private readonly router: Router,
     private readonly dialog: MatDialog,
-    private readonly loginService: LoginService) { 
-      this.user = loginService.getUser();
-    }
+    private readonly loginService: LoginService
+  ) {
+    this.user = loginService.getUser();
+  }
 
   logout(): void {
     this.loginService.clearToken();
@@ -25,8 +27,8 @@ export class NavbarComponent {
   }
 
   onPostCreate(): void {
-    const dialogRef = this.dialog.open(FormDialogComponent,{
-      width: '500 px'
+    const dialogRef = this.dialog.open(FormDialogComponent, {
+      width: '500 px',
     });
   }
 }

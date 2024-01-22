@@ -18,11 +18,15 @@ import { MatCardModule } from '@angular/material/card';
     MatInputModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
   ],
   exports: [
-    MatIconModule, MatToolbarModule, MatInputModule, 
-    BrowserAnimationsModule, MatButtonModule, MatCardModule
-  ]
+    MatIconModule,
+    MatToolbarModule,
+    MatInputModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatCardModule,
+  ],
 })
-export class MaterialModule { }
+export class MaterialModule {}

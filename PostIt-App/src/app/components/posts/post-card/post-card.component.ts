@@ -8,7 +8,7 @@ import { DeleteDialogComponent } from '../../dialogs/delete-dialog/delete-dialog
 @Component({
   selector: 'app-post-card',
   templateUrl: './post-card.component.html',
-  styleUrls: ['./post-card.component.css']
+  styleUrls: ['./post-card.component.css'],
 })
 export class PostCardComponent {
   @Input() post!: Post;
@@ -17,25 +17,23 @@ export class PostCardComponent {
   @Output() cardDeleted: EventEmitter<boolean> = new EventEmitter<boolean>();
   showFullContent: boolean = false;
 
-  constructor(
-    private dialog: MatDialog
-  ) { }
+  constructor(private dialog: MatDialog) {}
 
   onUpdatePost(post: Post): void {
     const dialogRef = this.dialog.open(FormDialogComponent, {
       width: '600 px',
-      data: post
+      data: post,
     });
 
     dialogRef.afterClosed().subscribe({
-      next: (_) => this.cardUpdated.emit(true)
+      next: (_) => this.cardUpdated.emit(true),
     });
   }
 
   onDeletePost(post: Post): void {
     const dialogRef = this.dialog.open(DeleteDialogComponent, {
       width: '400px',
-      data: post
+      data: post,
     });
 
     dialogRef.afterClosed().subscribe((_) => {

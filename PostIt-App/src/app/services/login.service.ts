@@ -10,28 +10,28 @@ import { AuthData } from '../models/authData.model';
 export class LoginService {
   private baseUrl = environment.baseURL;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   login(credentials: UserAuth): Observable<AuthData> {
     return this.http.post<AuthData>(`${this.baseUrl}/api/Login`, credentials);
   }
 
-  setToken(token: string): void{
+  setToken(token: string): void {
     localStorage.setItem('user-token', token);
   }
 
   getToken(): string | null {
-    return localStorage.getItem("user-token");
+    return localStorage.getItem('user-token');
   }
 
-  setUser(user: User):void{
+  setUser(user: User): void {
     localStorage.setItem('user-data', JSON.stringify(user));
   }
 
-  getUser():User{
+  getUser(): User {
     let _user!: User;
 
-    let user = localStorage.getItem("user-data");
+    let user = localStorage.getItem('user-data');
     if (user) {
       return JSON.parse(user);
     }
@@ -39,11 +39,9 @@ export class LoginService {
     return _user;
   }
 
-  clearToken():void{
+  clearToken(): void {
     localStorage.removeItem('user-token');
     localStorage.removeItem('user-data');
     localStorage.clear();
   }
-  
 }
-

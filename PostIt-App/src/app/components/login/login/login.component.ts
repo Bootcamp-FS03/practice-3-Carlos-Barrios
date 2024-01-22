@@ -10,13 +10,13 @@ import { UserAuth } from 'src/app/models/userAuth.model';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnDestroy {
   loginForm: FormGroup;
   login$!: Observable<any>;
   loginSubscription!: Subscription;
-  userAuth ! :UserAuth;
+  userAuth!: UserAuth;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -26,7 +26,7 @@ export class LoginComponent implements OnDestroy {
   ) {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
     });
   }
 
@@ -51,19 +51,18 @@ export class LoginComponent implements OnDestroy {
         error: (error) => {
           alert(error.error.message);
           this.loginForm.get('password')?.reset('');
-        }
+        },
       });
     }
   }
 
   onRegister(): void {
     const dialogRef = this.dialog.open(RegisterDialogComponent, {
-      width: '500px'
+      width: '500px',
     });
 
-    dialogRef.afterClosed().subscribe(_ => {
+    dialogRef.afterClosed().subscribe((_) => {
       this.router.navigate(['posts']);
     });
   }
 }
-

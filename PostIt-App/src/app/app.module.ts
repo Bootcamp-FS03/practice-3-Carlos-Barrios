@@ -25,17 +25,17 @@ import { RegisterDialogComponent } from './components/dialogs/register-dialog/re
     DeleteDialogComponent,
     FormDialogComponent,
     NavbarComponent,
-    RegisterDialogComponent
-  ],  
+    RegisterDialogComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

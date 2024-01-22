@@ -14,7 +14,7 @@ import { AuthData } from 'src/app/models/authData.model';
   templateUrl: './register-dialog.component.html',
   styleUrls: ['./register-dialog.component.css'],
 })
-export class RegisterDialogComponent implements OnInit{
+export class RegisterDialogComponent implements OnInit {
   registerForm!: FormGroup;
   user$!: Observable<User>;
   userSubscription!: Subscription;

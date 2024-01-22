@@ -7,9 +7,9 @@ import { PostsService } from 'src/app/services/posts.service';
 @Component({
   selector: 'app-delete-dialog',
   templateUrl: './delete-dialog.component.html',
-  styleUrls: ['./delete-dialog.component.css']
+  styleUrls: ['./delete-dialog.component.css'],
 })
-export class DeleteDialogComponent implements OnDestroy{
+export class DeleteDialogComponent implements OnDestroy {
   post$!: Observable<void>;
   postSubscription!: Subscription;
 
@@ -17,19 +17,19 @@ export class DeleteDialogComponent implements OnDestroy{
     private postService: PostsService,
     @Inject(MAT_DIALOG_DATA) public data: Post,
     private dialogRef: MatDialogRef<DeleteDialogComponent>
-  ) { }
+  ) {}
 
   ngOnDestroy(): void {
-    if(this.postSubscription){
+    if (this.postSubscription) {
       this.postSubscription.unsubscribe();
     }
   }
 
   onDeletePost(): void {
     const postId = this.data?.id;
-    if(postId){      
+    if (postId) {
       this.post$ = this.postService.deletePost(postId);
-      this.postSubscription = this.post$.subscribe(_ => {
+      this.postSubscription = this.post$.subscribe((_) => {
         this.dialogRef.close();
       });
     }

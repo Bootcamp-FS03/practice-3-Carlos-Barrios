@@ -1,6 +1,6 @@
-export interface Post{
-    id?: string,
-    userId: string,
-    content: string,
-    images: string[]
+export interface Post {
+  id?: string;
+  userId: string;
+  content: string;
+  images: string[];
 }

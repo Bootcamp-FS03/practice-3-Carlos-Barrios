@@ -9,7 +9,7 @@ import { PostsService } from 'src/app/services/posts.service';
 @Component({
   selector: 'app-my-posts',
   templateUrl: './my-posts.component.html',
-  styleUrls: ['./my-posts.component.css']
+  styleUrls: ['./my-posts.component.css'],
 })
 export class MyPostsComponent {
   user!: User;
@@ -20,8 +20,9 @@ export class MyPostsComponent {
   constructor(
     private postService: PostsService,
     private loginService: LoginService,
-    private communicationService: ComunicationService) {
-      this.user = this.loginService.getUser();
+    private communicationService: ComunicationService
+  ) {
+    this.user = this.loginService.getUser();
   }
 
   ngOnInit(): void {
@@ -39,12 +40,14 @@ export class MyPostsComponent {
   }
 
   getPosts(): void {
-    this.myPosts$ = this.user && this.user?.id? this.postService.getAllUserPost(this.user.id) : of([]);;
+    this.myPosts$ =
+      this.user && this.user?.id
+        ? this.postService.getAllUserPost(this.user.id)
+        : of([]);
     this.myPostSubscription = this.myPosts$.subscribe({
       next: (res) => {
         this.myPosts = res.reverse();
-      }
+      },
     });
   }
-
 }

@@ -9,7 +9,7 @@ import { PostsService } from 'src/app/services/posts.service';
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
-  styleUrls: ['./posts.component.css']
+  styleUrls: ['./posts.component.css'],
 })
 export class PostsComponent implements OnInit, OnDestroy {
   user!: User;
@@ -21,7 +21,8 @@ export class PostsComponent implements OnInit, OnDestroy {
   constructor(
     private postService: PostsService,
     private loginService: LoginService,
-    private communicationService: ComunicationService) {
+    private communicationService: ComunicationService
+  ) {
     this.user = this.loginService.getUser();
   }
 
@@ -44,8 +45,7 @@ export class PostsComponent implements OnInit, OnDestroy {
     this.postSubscription = this.posts$.subscribe({
       next: (res) => {
         this.posts = res.reverse();
-      }
+      },
     });
   }
-
 }

@@ -29,13 +29,13 @@ export class FormDialogComponent implements OnInit, OnDestroy {
   ) {
     this.user = this.loginService.getUser();
   }
-  
+
   ngOnInit(): void {
     this.initializeForm();
   }
 
   ngOnDestroy(): void {
-    if (this.postSubscription){
+    if (this.postSubscription) {
       this.postSubscription.unsubscribe();
     }
   }
@@ -82,7 +82,7 @@ export class FormDialogComponent implements OnInit, OnDestroy {
   private updatePost(postData: Post): void {
     const postId = this.data?.id;
     if (postId) {
-      this.post$= this.postService.updatePost(postData, postId);
+      this.post$ = this.postService.updatePost(postData, postId);
       this.postSubscription = this.post$.subscribe({
         next: (post) => {
           this.dialogRef.close(post);
