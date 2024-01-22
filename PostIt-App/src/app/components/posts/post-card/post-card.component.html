@@ -2,7 +2,14 @@
     <mat-card-content>
         <section class="post-card__info">
             <div>
-                <p>{{post.content}}</p>
+                <p *ngIf="!showFullContent">
+                    {{ truncateText(post.content) }}
+                    <a *ngIf="post.content.length > 200" (click)="toggleContent()">Read more</a>
+                </p>
+                <p *ngIf="showFullContent">
+                    {{ post.content }}
+                    <a (click)="toggleContent()">Read less</a>
+                </p>
             </div>
         </section>
         <section *ngIf="isOwner" class="post-card__options">

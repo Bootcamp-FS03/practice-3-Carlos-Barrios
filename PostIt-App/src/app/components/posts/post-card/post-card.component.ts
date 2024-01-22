@@ -15,6 +15,7 @@ export class PostCardComponent {
   @Input() isOwner: boolean = false;
   @Output() cardUpdated: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() cardDeleted: EventEmitter<boolean> = new EventEmitter<boolean>();
+  showFullContent: boolean = false;
 
   constructor(
     private dialog: MatDialog
@@ -40,5 +41,13 @@ export class PostCardComponent {
     dialogRef.afterClosed().subscribe((_) => {
       this.cardDeleted.emit(true);
     });
+  }
+
+  truncateText(text: string): string {
+    return text.length > 200 ? text.substring(0, 200) + '...' : text;
+  }
+
+  toggleContent() {
+    this.showFullContent = !this.showFullContent;
   }
 }

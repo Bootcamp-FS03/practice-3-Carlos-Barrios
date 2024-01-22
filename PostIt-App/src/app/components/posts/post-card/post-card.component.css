@@ -1,36 +1,47 @@
-:host{
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    border: 1px solid black;
-    border-radius: 5px;
-    margin: 16px auto;
-    width: 80%;
+:host {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 16px auto;
+  width: 80%;
 }
 
 .post-card__info {
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 10px 10px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px 10px;
 }
 
 .post-card__info div {
-    line-height: normal;
+  line-height: normal;
 }
 
 .post-card__info div h4 {
-    margin: 0;
-    font-weight: bold;
+  margin: 0;
+  font-weight: bold;
 }
 
 .post-card__options {
-    width: 25%;
-    display: flex;
-    align-self: flex-end;
+  width: 25%;
+  display: flex;
+  align-self: flex-end;
 }
 
 .post-card__options .mat-icon:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
+
+.post-card__info a {
+    color: gray;
+  text-decoration: underline;
+  font-style: italic;
+  cursor: pointer;
+}
+
+.post-card__info a:hover {
+    color: darkgray;
+  }
