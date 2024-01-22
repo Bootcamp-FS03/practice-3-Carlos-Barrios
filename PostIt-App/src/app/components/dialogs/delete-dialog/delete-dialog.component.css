@@ -1,14 +1,14 @@
-.delete_dialog_wrapper{
+.delete_dialog_wrapper {
   height: 100px;
 }
 
-p{
+p {
   text-align: center;
   margin-top: 16px;
 }
 
 .delete-dialog__actions {
-  width: 100%;  
+  width: 100%;
   display: flex;
   justify-content: center;
 }

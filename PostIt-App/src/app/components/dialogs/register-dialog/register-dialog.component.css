@@ -5,30 +5,30 @@
 } */
 
 button {
-    margin-top: 16px;
+  margin-top: 16px;
 }
 
 form {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0;
-    padding: 20px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 20px 20px;
 }
 mat-label {
-    font-size: 14px;
+  font-size: 14px;
 }
 
-.form-actions{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-top: 12px;
+.form-actions {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
 }
 
-.form-actions button{
-    margin: 0 12px;
+.form-actions button {
+  margin: 0 12px;
 }
 
-mat-form-field{
-    margin: 0 8px;
+mat-form-field {
+  margin: 0 8px;
 }

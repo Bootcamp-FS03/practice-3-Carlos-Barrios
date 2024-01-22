@@ -1,21 +1,21 @@
 a {
-    text-decoration: none !important;
-    font-size: smaller;
-    color: #ffffff;
+  text-decoration: none !important;
+  font-size: smaller;
+  color: #ffffff;
 }
 
-.nav-bar{
-    padding: 0 12%;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 10;
+.nav-bar {
+  padding: 0 12%;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 10;
 }
 
 .spacer {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 
 .text-title-color {
-    color: #ffffff !important;
+  color: #ffffff !important;
 }
