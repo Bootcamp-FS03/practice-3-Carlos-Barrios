@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Observable, Subscription, of } from 'rxjs';
 import { Post } from 'src/app/models/post.model';
 import { User } from 'src/app/models/user.model';
-import { ComunicationService } from 'src/app/services/comunication.service';
 import { LoginService } from 'src/app/services/login.service';
 import { PostsService } from 'src/app/services/posts.service';
+import { FormDialogComponent } from '../../dialogs/form-dialog/form-dialog.component';
 
 @Component({
   selector: 'app-my-posts',
@@ -20,17 +21,13 @@ export class MyPostsComponent {
   constructor(
     private postService: PostsService,
     private loginService: LoginService,
-    private communicationService: ComunicationService
+    private readonly dialog: MatDialog
   ) {
     this.user = this.loginService.getUser();
   }
 
   ngOnInit(): void {
     this.getPosts();
-    this.communicationService.resourceCreated$.subscribe(() => {
-      // Lógica para cargar los posts actualizados
-      this.getPosts();
-    });
   }
 
   ngOnDestroy(): void {
@@ -49,5 +46,16 @@ export class MyPostsComponent {
         this.myPosts = res.reverse();
       },
     });
+  }
+
+  onPostCreate(): void {
+    console.log('any');
+    const dialogRef = this.dialog.open(FormDialogComponent, {
+      width: '500 px',
+    });
+
+    dialogRef.afterClosed().subscribe(_ => {
+      this.getPosts();
+   });
   }
 }

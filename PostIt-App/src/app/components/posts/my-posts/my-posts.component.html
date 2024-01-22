@@ -1,5 +1,8 @@
 <app-navbar></app-navbar>
-<div class="post" *ngFor="let post of myPosts">
+<div class="post">
+  <a [routerLink]="'/posts'">Posts</a>
+</div>
+<div *ngFor="let post of myPosts">
   <app-post-card
     [post]="post"
     [isOwner]="post.userId === user.id"
@@ -7,3 +10,6 @@
     (cardDeleted)="getPosts()"
   ></app-post-card>
 </div>
+<button mat-fab class="add-button" color="primary" (click)="onPostCreate()">
+  <mat-icon>add</mat-icon>
+</button>

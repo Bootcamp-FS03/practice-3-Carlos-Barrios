@@ -4,7 +4,6 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Observable, Subscription } from 'rxjs';
 import { Post } from 'src/app/models/post.model';
 import { User } from 'src/app/models/user.model';
-import { ComunicationService } from 'src/app/services/comunication.service';
 import { LoginService } from 'src/app/services/login.service';
 import { PostsService } from 'src/app/services/posts.service';
 
@@ -24,7 +23,6 @@ export class FormDialogComponent implements OnInit, OnDestroy {
     private dialogRef: MatDialogRef<FormDialogComponent>,
     private postService: PostsService,
     @Inject(MAT_DIALOG_DATA) public data: Post,
-    private comunicationService: ComunicationService,
     private loginService: LoginService
   ) {
     this.user = this.loginService.getUser();
@@ -70,7 +68,6 @@ export class FormDialogComponent implements OnInit, OnDestroy {
     this.post$ = this.postService.createPost(newPost);
     this.postSubscription = this.post$.subscribe({
       next: (post) => {
-        this.comunicationService.notifyResourceCreated();
         this.dialogRef.close(post);
       },
       error: (error) => {
